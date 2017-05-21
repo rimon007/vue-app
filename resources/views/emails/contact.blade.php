@@ -1,9 +1,9 @@
 <h2>You got a message!</h2>
 
 <p>
-	{{ $bodyMessage }}
+	{{ $data['bodyMessage'] }}
 </p>
 
 <p>
-	Send Via: {{ $username }}
+	Send Via: {{ $data['username'] }}
 </p>

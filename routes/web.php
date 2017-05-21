@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Http\Request;
+use App\Mail\Welcome;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,8 +51,9 @@ Route::post('/mail', function(Request $request) {
 	    ],
 	];
 
+	\Mail::to($data['email'])->send(new Welcome($data));
 
-	\Mail::send('emails.contact', $data,
+	/*\Mail::send('emails.contact', $data,
 	    function ($m) use ($data) {
 	        $m->from($data['email'], $data['username']);
 	        $m->attachData(
@@ -61,7 +63,7 @@ Route::post('/mail', function(Request $request) {
 	        	]);
 	        $m->to($data['email']);
 	        $m->subject($data['subject']);
-	});
+	});*/
 
 	return 'ture';
 
